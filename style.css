@@ -6,7 +6,6 @@ body {
     color: #111;
 }
 
-/* ===== TITRE ===== */
 h1 {
     text-align: center;
     font-size: 64px;
@@ -14,15 +13,100 @@ h1 {
     margin: 60px 0 40px;
 }
 
-/* ===== SECTION FORMATIONS ===== */
-.formations {
-    background-color: #005e5e;
+/* ===== HERO ===== */
+.hero {
+    height: 100vh;
+    background-image: url("assets/fond.jpg");
+    background-size: cover;
+    background-position: center;
     display: flex;
-    justify-content: center;
-    gap: 80px;
+    align-items: center;
+    position: relative;
 }
 
-#formations {
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.overlay {
+    position: relative;
+    color: white;
+    max-width: 900px;
+    padding-left: 8%;
+}
+
+.overlay h2 {
+    font-size: 64px;
+    font-weight: 400;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.overlay h1 {
+    font-size: 120px;
+    font-weight: 500;
+    margin: 0 0 20px;
+}
+
+.overlay p {
+    font-size: 28px;
+    max-width: 700px;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* Responsive hero */
+@media (max-width:900px) {
+    .overlay h1 { font-size: 64px; }
+    .overlay h2 { font-size: 36px; }
+    .overlay p { font-size: 18px; }
+}
+
+/* ===== CARTES GÉNÉRALES ===== */
+.carte {
+    background: #e6e6e6;
+    width: 320px;
+    padding: 28px;
+    box-sizing: border-box;
+}
+
+.carte.highlight {
+    background: #5f8f8f;
+    color: white;
+    transform: scale(1.08);
+}
+
+.carte h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0 0 18px;
+}
+
+.carte p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.carte img {
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+}
+
+/* ===== LIENS ===== */
+a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* ===== FORMATIONS / EXPÉRIENCES / INTÉRÊTS ===== */
+.formations,
+.experiences,
+.centres_interets {
     max-width: 1200px;
     margin: 0 auto 80px;
     display: flex;
@@ -31,56 +115,15 @@ h1 {
     align-items: stretch;
 }
 
-/* ===== CARTES ===== */
-.carte {
-    background: #e6e6e6;
-    width: 320px;
-    padding: 28px;
-    box-sizing: border-box;
+.formations {
+    background-color: #005e5e;
 }
 
-/* Carte centrale mise en avant */
-.carte.highlight {
-    background: #5f8f8f;
-    color: white;
-    transform: scale(1.08);
-}
-
-/* ===== TITRES CARTES ===== */
-.carte h2 {
-    font-size: 30px;
-    font-weight: 500;
-    margin: 0 0 18px;
-}
-
-.carte.highlight h2 {
-    color: white;
-}
-
-/* ===== LIENS ===== */
-.carte a {
-    color: inherit;
-    text-decoration: underline;
-}
-
-/* ===== TEXTES ===== */
-.carte p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 22px;
-}
-
-/* ===== IMAGES ===== */
-.carte img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-top: 10px;
-}
-
-/* ===== RESPONSIVE ===== */
+/* Responsive cartes */
 @media (max-width:1000px) {
-    #formations {
+    .formations,
+    .experiences,
+    .centres_interets {
         flex-direction: column;
         align-items: center;
     }
@@ -90,94 +133,268 @@ h1 {
     }
 }
 
-/* ===== HERO IMAGE ===== */
-.hero {
-    height: 100vh;
-    /* pleine hauteur écran */
-    background-image: url("fond.jpg");
-    /* ton image */
-    background-size: cover;
-    background-position: center;
-    display: flex;
+/* ===== SECTION AUTRES EXPÉRIENCES ===== */
+.section {
+    margin: 40px auto;
+    max-width: 1000px;
+}
+
+.experience {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
     align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
 }
 
-/* assombrit l'image pour lisibilité */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
+.experience:last-child {
+    border-bottom: none;
 }
 
-/* bloc texte */
-.overlay {
-    position: relative;
+.exp-text h3 {
+    margin: 0 0 5px;
+    font-size: 20px;
+    color: #333;
+}
+
+.exp-text h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+}
+
+.exp-text p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.exp-image img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .experience {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== CENTRES D’INTÉRÊTS ===== */
+.interets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 40px auto;
+    max-width: 1100px;
+}
+
+.interets .carte {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.interets .carte.highlight {
+    background: #ffecec;
+}
+
+.interets .carte h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+.interets .carte p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.interets .carte img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+/* ===== SECTION PROJETS ===== */
+.projets {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.projet-carte {
+    background: #e6e6e6;
+    padding: 30px;
+    border-radius: 12px;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.projet-carte img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 25px;
+}
+
+/* Bouton */
+.btn-projets {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #005e5e;
     color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn-projets:hover {
+    background: #004646;
+}
+/* ===== HERO PETIT POUR PAGE PROJETS ===== */
+.hero-small {
+    height: 40vh;
+}
+
+/* ===== PAGE PROJETS ===== */
+.projets-page {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.projet-carte {
+    background: #e6e6e6;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.projet-carte img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.projet-carte h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+.projet-carte p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ===== BOUTON RETOUR ===== */
+.retour {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.btn-retour {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #005e5e;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn-retour:hover {
+    background: #004646;
+}
+/* ===== MENTIONS LÉGALES ===== */
+.mentions {
     max-width: 900px;
-    padding-left: 8%;
+    margin: 0 auto 60px;
+    background: #e6e6e6;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.mentions h2 {
+    font-size: 28px;
+    margin-top: 30px;
+}
+
+.mentions p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+/* ===== PAGE CONTACT ===== */
+.contact {
+    max-width: 700px;
+    margin: 0 auto 80px;
+    background: #e6e6e6;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.intro-contact {
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-form label {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
     font-family: "Georgia", serif;
 }
 
-/* petit titre */
-.overlay h2 {
-    font-size: 64px;
-    font-weight: 400;
-    margin: 0;
-    opacity: 0.9;
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #005e5e;
+    outline: none;
 }
 
-/* gros titre */
-.overlay h1 {
-    font-size: 120px;
-    font-weight: 500;
-    margin: 0 0 20px;
+.btn-contact {
+    padding: 14px 28px;
+    background: #005e5e;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-/* texte description */
-.overlay p {
-    font-size: 28px;
-    max-width: 700px;
-    line-height: 1.4;
-    opacity: 0.9;
-}
-
-/* responsive */
-@media (max-width:900px) {
-    .overlay h1 {
-        font-size: 64px;
-    }
-
-    .overlay h2 {
-        font-size: 36px;
-    }
-
-    .overlay p {
-        font-size: 18px;
-    }
-}
-
-.experiences {
-    max-width: 1200px;
-    margin: 0 auto 80px;
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    align-items: stretch;
-
-}
-
-a {
-    color: inherit;
-    text-decoration: underline;
-}
-
-.centres_interets {
-    max-width: 1200px;
-    margin: 0 auto 80px;
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    align-items: stretch;
-
+.btn-contact:hover {
+    background: #004646;
 }
