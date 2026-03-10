@@ -1,0 +1,173 @@
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    font-family: "Georgia", "Times New Roman", serif;
+    background: #dcdcdc;
+    color: #111;
+}
+
+/* ===== TITRE ===== */
+h1 {
+    text-align: center;
+    font-size: 64px;
+    font-weight: 500;
+    margin: 60px 0 40px;
+}
+
+/* ===== SECTION FORMATIONS ===== */
+.formations {
+    background-color: #005e5e;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+#formations {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    align-items: stretch;
+}
+
+/* ===== CARTES ===== */
+.carte {
+    background: #e6e6e6;
+    width: 320px;
+    padding: 28px;
+    box-sizing: border-box;
+}
+
+/* Carte centrale mise en avant */
+.carte.highlight {
+    background: #5f8f8f;
+    color: white;
+    transform: scale(1.08);
+}
+
+/* ===== TITRES CARTES ===== */
+.carte h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0 0 18px;
+}
+
+.carte.highlight h2 {
+    color: white;
+}
+
+/* ===== LIENS ===== */
+.carte a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* ===== TEXTES ===== */
+.carte p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+/* ===== IMAGES ===== */
+.carte img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:1000px) {
+    #formations {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carte.highlight {
+        transform: none;
+    }
+}
+
+/* ===== HERO IMAGE ===== */
+.hero {
+    height: 100vh;
+    /* pleine hauteur écran */
+    background-image: url("fond.jpg");
+    /* ton image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+/* assombrit l'image pour lisibilité */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* bloc texte */
+.overlay {
+    position: relative;
+    color: white;
+    max-width: 900px;
+    padding-left: 8%;
+    font-family: "Georgia", serif;
+}
+
+/* petit titre */
+.overlay h2 {
+    font-size: 64px;
+    font-weight: 400;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* gros titre */
+.overlay h1 {
+    font-size: 120px;
+    font-weight: 500;
+    margin: 0 0 20px;
+}
+
+/* texte description */
+.overlay p {
+    font-size: 28px;
+    max-width: 700px;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* responsive */
+@media (max-width:900px) {
+    .overlay h1 {
+        font-size: 64px;
+    }
+
+    .overlay h2 {
+        font-size: 36px;
+    }
+
+    .overlay p {
+        font-size: 18px;
+    }
+}
+
+.experiences {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    align-items: stretch;
+
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+}
