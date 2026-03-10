@@ -171,3 +171,13 @@ a {
     color: inherit;
     text-decoration: underline;
 }
+
+.centres_interets {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    align-items: stretch;
+
+}
