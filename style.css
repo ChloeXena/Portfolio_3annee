@@ -8,32 +8,50 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 64px;
+    font-size: 56px;
     font-weight: 500;
-    margin: 60px 0 40px;
+    margin: 0 0 60px;
+    letter-spacing: 0.5px;
+}
+
+/* évite que les titres soient à côté en flex */
+section h1 { width: 100%; }
+
+section {
+    padding: 80px 20px;
+}
+
+/* largeur lisible */
+section > * {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* ===== HERO ===== */
 .hero {
     height: 100vh;
-    background-image: url("assets/fond.jpg");
-    background-size: cover;
-    background-position: center;
+    background: url("assets/fond.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
     position: relative;
+    color: white;
 }
 
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0,0,0,0.35);
 }
 
 .overlay {
     position: relative;
-    color: white;
     max-width: 900px;
     padding-left: 8%;
 }
@@ -42,232 +60,178 @@ h1 {
     font-size: 64px;
     font-weight: 400;
     margin: 0;
-    opacity: 0.9;
+    opacity: .9;
 }
 
 .overlay h1 {
     font-size: 120px;
-    font-weight: 500;
     margin: 0 0 20px;
 }
 
 .overlay p {
-    font-size: 28px;
+    font-size: 26px;
     max-width: 700px;
     line-height: 1.4;
-    opacity: 0.9;
+    opacity: .9;
 }
 
-/* Responsive hero */
-@media (max-width:900px) {
-    .overlay h1 { font-size: 64px; }
-    .overlay h2 { font-size: 36px; }
-    .overlay p { font-size: 18px; }
+/* ===== COULEURS PAR SECTION ===== */
+.formations { 
+    background: #0f4c5c; 
+    color: white; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 40px;
+}
+.experiences { 
+    background: #1b262c; 
+    color: white; 
 }
 
-/* ===== CARTES GÉNÉRALES ===== */
+/* conteneur des cartes d'expériences */
+.experiences > .experiences {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+.centres-interets { 
+    background: #3282b8; 
+    color: white; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 40px;
+}
+.autres {
+    background: #bbe1fa;
+}
+
+/* bloc interne plus étroit pour confort lecture */
+.autres > h1,
+.autres > .experience {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.projets { background: #e9c46a; }
+
+/* ===== CARTES ===== */
 .carte {
-    background: #e6e6e6;
+    background: rgba(255,255,255,0.9);
     width: 320px;
     padding: 28px;
     box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    color: #111;
 }
 
 .carte.highlight {
-    background: #5f8f8f;
-    color: white;
-    transform: scale(1.08);
+    transform: scale(1.06);
+    border: 3px solid #ffd166;
 }
 
 .carte h2 {
-    font-size: 30px;
-    font-weight: 500;
-    margin: 0 0 18px;
+    font-size: 24px;
+    margin: 0 0 15px;
 }
 
 .carte p {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
-    margin-bottom: 22px;
 }
 
 .carte img {
     width: 100%;
-    display: block;
-    margin-top: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
 }
 
-/* ===== LIENS ===== */
 a {
     color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
     text-decoration: underline;
 }
 
-/* ===== FORMATIONS / EXPÉRIENCES / INTÉRÊTS ===== */
-.formations,
-.experiences,
-.centres_interets {
-    max-width: 1200px;
-    margin: 0 auto 80px;
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    align-items: stretch;
-}
-
-.formations {
-    background-color: #005e5e;
-}
-
-/* Responsive cartes */
-@media (max-width:1000px) {
-    .formations,
-    .experiences,
-    .centres_interets {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .carte.highlight {
-        transform: none;
-    }
-}
-
-/* ===== SECTION AUTRES EXPÉRIENCES ===== */
-.section {
-    margin: 40px auto;
-    max-width: 1000px;
-}
-
+/* ===== AUTRES EXPÉRIENCES ===== */
 .experience {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 20px;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
     align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.experience:last-child {
-    border-bottom: none;
-}
-
-.exp-text h3 {
-    margin: 0 0 5px;
-    font-size: 20px;
-    color: #333;
-}
-
-.exp-text h4 {
-    margin: 0 0 10px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #555;
-}
-
-.exp-text p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.5;
+    margin-bottom: 50px;
+    background: rgba(255,255,255,0.85);
+    padding: 24px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .exp-image img {
     width: 100%;
-    border-radius: 10px;
+    height: 300px;
     object-fit: cover;
-}
-
-/* Responsive */
-@media (max-width: 800px) {
-    .experience {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ===== CENTRES D’INTÉRÊTS ===== */
-.interets {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin: 40px auto;
-    max-width: 1100px;
-}
-
-.interets .carte {
-    background: #fff;
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    text-align: center;
 }
 
-.interets .carte.highlight {
-    background: #ffecec;
-}
-
-.interets .carte h2 {
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: #333;
-}
-
-.interets .carte p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-.interets .carte img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-/* ===== SECTION PROJETS ===== */
-.projets {
-    max-width: 1100px;
-    margin: 0 auto 80px;
-    display: flex;
-    justify-content: center;
-}
-
+/* ===== PROJETS ===== */
 .projet-carte {
-    background: #e6e6e6;
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.95);
     padding: 30px;
     border-radius: 12px;
-    width: 80%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .projet-carte img {
     width: 100%;
     border-radius: 10px;
-    display: block;
     margin-bottom: 25px;
 }
 
-/* Bouton */
 .btn-projets {
     display: inline-block;
     padding: 14px 28px;
-    background: #005e5e;
+    background: #0f4c5c;
     color: white;
-    font-size: 20px;
-    border-radius: 8px;
+    font-size: 18px;
+    border-radius: 10px;
     text-decoration: none;
-    transition: 0.3s ease;
+    transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
 }
 
 .btn-projets:hover {
-    background: #004646;
-}
-/* ===== HERO PETIT POUR PAGE PROJETS ===== */
-.hero-small {
-    height: 40vh;
+    background: #0c3f4c;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
-/* ===== PAGE PROJETS ===== */
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .overlay h1 { font-size: 64px; }
+    .overlay h2 { font-size: 36px; }
+    .overlay p { font-size: 18px; }
+
+    .experience { grid-template-columns: 1fr; }
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #111;
+    color: white;
+    font-size: 14px;
+}
+
+/* ===== CSS CONSERVÉ POUR AUTRES PAGES ===== */
+.hero-small { height: 40vh; }
+
 .projets-page {
     max-width: 1200px;
     margin: 0 auto 80px;
@@ -277,51 +241,16 @@ a {
     padding: 0 20px;
 }
 
-.projet-carte {
-    background: #e6e6e6;
-    padding: 28px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.projet-carte img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.projet-carte h2 {
-    font-size: 26px;
-    margin-bottom: 12px;
-}
-
-.projet-carte p {
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* ===== BOUTON RETOUR ===== */
-.retour {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
 .btn-retour {
     display: inline-block;
     padding: 14px 28px;
-    background: #005e5e;
+    background: #0f4c5c;
     color: white;
     font-size: 20px;
     border-radius: 8px;
     text-decoration: none;
-    transition: 0.3s ease;
 }
 
-.btn-retour:hover {
-    background: #004646;
-}
-/* ===== MENTIONS LÉGALES ===== */
 .mentions {
     max-width: 900px;
     margin: 0 auto 60px;
@@ -331,18 +260,6 @@ a {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.mentions h2 {
-    font-size: 28px;
-    margin-top: 30px;
-}
-
-.mentions p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-top: 10px;
-}
-
-/* ===== PAGE CONTACT ===== */
 .contact {
     max-width: 700px;
     margin: 0 auto 80px;
@@ -352,49 +269,27 @@ a {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.intro-contact {
-    font-size: 18px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.contact-form label {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    font-family: "Georgia", serif;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #005e5e;
-    outline: none;
-}
-
-.btn-contact {
-    padding: 14px 28px;
-    background: #005e5e;
-    color: white;
-    font-size: 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.btn-contact:hover {
-    background: #004646;
-}
+/* ===== LIGHTBOX IMAGE ===== */
+        .lightbox{
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            cursor: zoom-out;
+            z-index: 9999;
+        }
+        .lightbox img{
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            animation: zoomIn .2s ease;
+        }
+        @keyframes zoomIn{
+            from{ transform: scale(.9); opacity: 0; }
+            to{ transform: scale(1); opacity: 1; }
+        }
+        img{ cursor: zoom-in; }
