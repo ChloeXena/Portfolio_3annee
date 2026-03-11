@@ -15,14 +15,16 @@ h1 {
 }
 
 /* évite que les titres soient à côté en flex */
-section h1 { width: 100%; }
+section h1 {
+    width: 100%;
+}
 
 section {
     padding: 80px 20px;
 }
 
 /* largeur lisible */
-section > * {
+section>* {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -47,7 +49,7 @@ section > * {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
 }
 
 .overlay {
@@ -76,55 +78,61 @@ section > * {
 }
 
 /* ===== COULEURS PAR SECTION ===== */
-.formations { 
-    background: #0f4c5c; 
-    color: white; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 40px;
-}
-.experiences { 
-    background: #1b262c; 
-    color: white; 
-}
-
-/* conteneur des cartes d'expériences */
-.experiences > .experiences {
+.formations {
+    background: #0f4c5c;
+    color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
 }
-.centres-interets { 
-    background: #3282b8; 
-    color: white; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
+
+.experiences {
+    background: #1b262c;
+    color: white;
+}
+
+/* conteneur des cartes d'expériences */
+.experiences>.experiences {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 40px;
 }
+
+.centres-interets {
+    background: #3282b8;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
 .autres {
     background: #bbe1fa;
 }
 
 /* bloc interne plus étroit pour confort lecture */
-.autres > h1,
-.autres > .experience {
+.autres>h1,
+.autres>.experience {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
-.projets { background: #e9c46a; }
+
+.projets {
+    background: #e9c46a;
+}
 
 /* ===== CARTES ===== */
 .carte {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     width: 320px;
     padding: 28px;
     box-sizing: border-box;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     color: #111;
 }
 
@@ -165,10 +173,10 @@ a:hover {
     gap: 40px;
     align-items: center;
     margin-bottom: 50px;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     padding: 24px;
     border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .exp-image img {
@@ -182,10 +190,10 @@ a:hover {
 .projet-carte {
     max-width: 900px;
     margin: 0 auto;
-    background: rgba(255,255,255,0.95);
+    background: rgba(255, 255, 255, 0.95);
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     text-align: center;
 }
 
@@ -209,16 +217,26 @@ a:hover {
 .btn-projets:hover {
     background: #0c3f4c;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
-    .overlay h1 { font-size: 64px; }
-    .overlay h2 { font-size: 36px; }
-    .overlay p { font-size: 18px; }
+    .overlay h1 {
+        font-size: 64px;
+    }
 
-    .experience { grid-template-columns: 1fr; }
+    .overlay h2 {
+        font-size: 36px;
+    }
+
+    .overlay p {
+        font-size: 18px;
+    }
+
+    .experience {
+        grid-template-columns: 1fr;
+    }
 }
 
 footer {
@@ -230,7 +248,9 @@ footer {
 }
 
 /* ===== CSS CONSERVÉ POUR AUTRES PAGES ===== */
-.hero-small { height: 40vh; }
+.hero-small {
+    height: 40vh;
+}
 
 .projets-page {
     max-width: 1200px;
@@ -257,7 +277,7 @@ footer {
     background: #e6e6e6;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .contact {
@@ -266,30 +286,92 @@ footer {
     background: #e6e6e6;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* ===== LIGHTBOX IMAGE ===== */
-        .lightbox{
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.85);
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            cursor: zoom-out;
-            z-index: 9999;
-        }
-        .lightbox img{
-            max-width: 95%;
-            max-height: 95%;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            animation: zoomIn .2s ease;
-        }
-        @keyframes zoomIn{
-            from{ transform: scale(.9); opacity: 0; }
-            to{ transform: scale(1); opacity: 1; }
-        }
-        img{ cursor: zoom-in; }
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    cursor: zoom-out;
+    z-index: 9999;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 95%;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: zoomIn .2s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+img {
+    cursor: zoom-in;
+}
+
+.contact-hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 60px;
+    background-image: url("assets/contact.png");
+}
+
+.contact-hero .contact-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+    z-index: 1;
+}
+
+.contact-hero .contact-overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+}
+
+.contact-hero .contact-overlay h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.contact-hero .btn-contact {
+    display: inline-block;
+    padding: 16px 32px;
+    background: #0f4c5c;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+}
+
+.contact-hero .btn-contact:hover {
+    background: #0c3f4c;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
